@@ -1,0 +1,50 @@
+<%- include('header') %>
+
+<div class="receipt-container">
+    <div class="print-section" onclick="window.print()">
+        <i class="fas fa-print"></i>
+        <p>PRINT</p>
+    </div>
+    
+    <h2 class="make-payment-title">MAKE PAYMENT</h2>
+
+    
+
+    <div class="receipt-card">
+    <div class="receipt-header-info">
+        <h2 class="hotel-name-receipt">D'Calvins Hotel & Lounge</h2>
+        <p class="hotel-location">Abuja, Nigeria</p>
+        <p class="receipt-date"><%= new Date().toLocaleString() %></p>
+    </div>
+
+    <div class="receipt-divider">------------------------------------------</div>
+
+    <div class="receipt-details">
+        <p><strong>CUSTOMER:</strong> <span class="customer-data"><%= booking.guest.toUpperCase() %></span></p>
+        <p><strong>PHONE:</strong> <span class="customer-data"><%= booking.phone %></span></p>
+        
+        <br>
+        <p class="items-ordered-label">ITEMS ORDERED:</p>
+        <p><strong><%= booking.room %></strong></p>
+    </div>
+
+    <div class="receipt-divider">------------------------------------------</div>
+
+    <div class="receipt-pricing">
+        <div class="price-row">
+            <span>Subtotal:</span>
+            <span>&#8358;<%= (booking.amount / 1.075).toLocaleString() %></span>
+        </div>
+        <div class="price-row">
+            <span>VAT (7.5%):</span>
+            <span>&#8358;<%= (booking.amount - (booking.amount / 1.075)).toLocaleString() %></span>
+        </div>
+        
+        <div class="total-row">
+            <span>TOTAL:</span>
+            <span>&#8358;<%= booking.amount.toLocaleString() %></span>
+        </div>
+    </div>
+
+    <p class="thanks-msg">*** THANK YOU FOR YOUR PATRONAGE ***</p>
+</div>

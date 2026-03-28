@@ -5,10 +5,65 @@
         <i class="fas fa-check-circle"></i>
     </div>
     <h1 style="color: var(--primary-purple);">Reservation Received!</h1>
-    <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 10px auto 30px;">
-        Thank you for choosing <strong>D'Calvins Luxury Hotel</strong>. We have received your booking details and our concierge will contact you shortly to confirm your stay.
-       <p style="color: red;">Please send the receipt to our WhatsApp number to expedite the confirmation process. We look forward to hosting you soon!.</p> 
-    </p>
+
+<div class="receipt-container">
+    <div class="print-section" onclick="window.print()">
+        <i class="fas fa-print"></i>
+        <p>PRINT</p>
+    </div>
+
+    <p style="color: red;">Please send the receipt to our WhatsApp number to expedite the confirmation process. We look forward to hosting you soon!.</p> 
+    
+    <h2 class="make-payment-title">MAKE PAYMENT</h2>
+
+    <div class="receipt-card">
+    <div class="receipt-header-info">
+        <h2 class="hotel-name-receipt">D'Calvins Hotel & Lounge</h2>
+        <p class="hotel-location">Abuja, Nigeria</p>
+        <p class="receipt-date"><%= new Date().toLocaleString() %></p>
+    </div>
+
+    <div class="receipt-divider">------------------------------------------</div>
+
+    <div class="receipt-details">
+        <p><strong>CUSTOMER:</strong> <span class="customer-data"><%= booking.guest.toUpperCase() %></span></p>
+        <p><strong>PHONE:</strong> <span class="customer-data"><%= booking.phone %></span></p>
+        
+        <br>
+        <p class="items-ordered-label">ITEMS ORDERED:</p>
+        <p><strong><%= booking.room %></strong></p>
+    </div>
+
+    <div class="receipt-divider">------------------------------------------</div>
+
+    <div class="receipt-pricing">
+        <div class="price-row">
+            <span>Subtotal:</span>
+            <span>&#8358;<%= (booking.amount / 1.075).toLocaleString() %></span>
+        </div>
+        <div class="price-row">
+            <span>VAT (7.5%):</span>
+            <span>&#8358;<%= (booking.amount - (booking.amount / 1.075)).toLocaleString() %></span>
+        </div>
+        
+        <div class="total-row">
+            <span>TOTAL:</span>
+            <span>&#8358;<%= booking.amount.toLocaleString() %></span>
+        </div>
+    </div>
+
+    <div class="account-details-box">
+    <p class="account-label">Account Details:</p>
+    <div class="account-info">
+        <span class="bank-name">MoniePoint</span> | 
+        <span class="account-holder">D'Calvins luxury limited| </span>
+        <span class="account-number" style="cursor: pointer;" onclick="copyToClipboard('5180641871')">5180641871 <i class="far fa-copy" style="font-size: 0.8rem;"></i></span>
+    </div>
+</div>
+
+    <p class="thanks-msg">*** THANK YOU FOR YOUR PATRONAGE ***</p>
+</div>
+
     <div style="margin-top: 30px;">
     <% 
         // 1. Create the custom message
@@ -33,5 +88,12 @@
     <a href="/" style="color: #666; text-decoration: none;">Back to Home</a>
 </div>
 </main>
+
+<script>
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text);
+    alert("Account number copied to clipboard!");
+}
+</script>
 
 <%- include('footer') %>

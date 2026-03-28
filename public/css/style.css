@@ -1099,3 +1099,176 @@
         height: auto;
     }
 }
+/* --- Receipt & Thank You Page Styling --- */
+
+.receipt-container {
+    background: var(--dark-black);
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 40px auto;
+    border: 1px solid var(--accent-yellow); /* Neon yellow border from your brand */
+}
+
+.make-payment-title {
+    color: var(--accent-yellow);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.receipt-card {
+    background: white;
+    color: black;
+    padding: 30px;
+    font-family: 'Courier New', Courier, monospace; /* Classic Receipt Font */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: left;
+    border-radius: 4px;
+}
+
+.receipt-header-info {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.hotel-name-receipt { 
+    margin: 0; 
+    font-size: 1.4rem;
+    font-weight: bold; 
+    text-transform: uppercase;
+}
+
+.hotel-location, .receipt-date { 
+    font-size: 0.85rem; 
+    margin: 2px 0; 
+    color: #333;
+}
+
+.receipt-divider { 
+    text-align: center; 
+    margin: 15px 0; 
+    letter-spacing: -1px; 
+    font-weight: bold;
+}
+
+.receipt-details p { 
+    margin: 8px 0; 
+    font-size: 1rem; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-row, .total-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.total-row {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-top: 2px dashed #000;
+    padding-top: 15px;
+}
+
+.thanks-msg {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.print-section {
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.print-section:hover {
+    opacity: 0.7;
+}
+
+.print-section i {
+    color: var(--accent-yellow);
+    font-size: 2rem;
+}
+
+.print-section p {
+    color: var(--accent-yellow);
+    margin: 5px 0 0 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.customer-data {
+    color: #555; /* Subtle gray for the actual name/phone values */
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.items-ordered-label {
+    color: #bbb;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.receipt-details strong {
+    font-weight: 900;
+}
+
+/* Print-only CSS to hide everything except the receipt when printing */
+@media print {
+    body * { visibility: hidden; }
+    .receipt-card, .receipt-card * { visibility: visible; }
+    .receipt-card {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+    .print-section, .make-payment-title { display: none; }
+}
+
+.account-details-box {
+    background: rgba(26, 26, 26, 0.8); /* Semi-transparent dark background */
+    border: 1px dashed var(--accent-yellow); /* Yellow dashed border */
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px; /* Matches the receipt width */
+    text-align: left;
+}
+
+.account-label {
+    color: #888; /* Grayish label text */
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.account-info {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.bank-name {
+    color: white;
+}
+
+.account-number {
+    color: white;
+}
+
+/* Mobile responsive fix */
+@media (max-width: 768px) {
+    .account-info {
+        font-size: 0.95rem; /* Slightly smaller text for phones */
+    }
+}
