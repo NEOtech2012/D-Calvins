@@ -132,9 +132,6 @@
         /* Image 3: Hotel Lobby/Lounge */
         background-image: url('/assets/suite-2.png');
     }
-    100% {
-        background-image: url('/assets/suite.png');
-    }
 }
 
 /* Darken the images so your white text is easy to read */
@@ -1474,10 +1471,23 @@
 
 
 
+
+
 @media (max-width: 768px) {
     .menu-toggle {
-        display: block; /* Show hamburger button */
-        z-index: 1001; /* Stay above the sidebar */
+        display: flex !important; /* Use flex to align the icon inside */
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative;
+        z-index: 9999 !important; /* This ensures it's not hidden behind the hero image */
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .main-header {
+        position: relative;
+        z-index: 10000; /* Keeps the whole header above the background images */
     }
 
     .nav-menu {
