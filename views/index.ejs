@@ -1,0 +1,171 @@
+<%- include('header') %>
+
+<section class="hero">
+    <div class="hero-overlay">
+        <h1>Welcome to D'Calvins Luxury Apartment</h1>
+        <p>Where luxury meets tranquility in paradise</p>
+        <div class="hero-btns">
+            <a href="/booking" class="btn-yellow"><i class="fas fa-calendar-alt"></i> Book Your Stay</a>
+            <a href="/rooms" class="btn-outline">Explore Rooms</a>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding white-bg">
+    <div class="container text-center">
+        <h2 class="section-title">Why Choose D'Calvins</h2>
+        <p class="section-subtitle">Experience unparalleled luxury and world-class hospitality</p>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="icon-circle"><i class="fas fa-bed"></i></div>
+                <h3>Luxury Rooms</h3>
+                <p>Elegantly designed rooms with breathtaking views and premium amenities</p>
+            </div>
+            
+            <div class="feature-item">
+                <div class="icon-circle"><i class="fas fa-utensils"></i></div>
+                <h3>World-Class Amenities</h3>
+                <p>Spa, fitness center, infinity pool, and fine dining restaurants</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="icon-circle"><i class="fas fa-award"></i></div>
+                <h3>5-Star Service</h3>
+                <p>Personalized attention and exceptional hospitality from our dedicated staff</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="icon-circle"><i class="fas fa-clock"></i></div>
+                <h3>24/7 Concierge</h3>
+                <p>Round-the-clock assistance to make your stay unforgettable</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="rooms-section">
+    <div class="container">
+        <h2 class="section-title text-center">Featured Rooms</h2>
+        
+        <div class="rooms-container">
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="/assets/bedroom-1.png" alt="Deluxe Suite">
+                </div>
+                <div class="room-content">
+                    <h3>Executive</h3>
+                    <p class="bed-type">Bed, AC, TV, Fans</p>
+                    <div class="room-footer">
+                        <span class="price"><strong>₦18,000</strong> / night</span>
+                        <a href="/booking" class="btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="/assets/bedroom-2.png" alt="Ocean View">
+                </div>
+                <div class="room-content">
+                    <h3>Standard</h3>
+                    <p class="bed-type">Bed, AC, TV</p>
+                    <div class="room-footer">
+                        <span class="price"><strong>₦15,000</strong> / night</span>
+                        <a href="/booking" class="btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="/assets/bedroom-3.jpeg" alt="Presidential Suite">
+                </div>
+                <div class="room-content">
+                    <h3>Luxury</h3>
+                    <p class="bed-type">Bed, AC, TV</p>
+                    <div class="room-footer">
+                        <span class="price"><strong>₦25,000</strong> / night</span>
+                        <a href="/booking" class="btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews-section section-padding">
+    <div class="container">
+        <h2 class="section-title text-center">Guest Reviews</h2>
+        <p class="section-subtitle text-center">What our guests are saying</p>
+
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Absolutely incredible experience! The staff went above and beyond to make our anniversary special."</p>
+                <h4 class="guest-name">Sarah Johnson</h4>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Best hotel I've ever stayed at. The ocean view room was breathtaking and the amenities were top-notch."</p>
+                <h4 class="guest-name">Michael Chen</h4>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"A perfect getaway. The spa services were divine and the food at the restaurant was exceptional."</p>
+                <h4 class="guest-name">Emily Rodriguez</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="leave-review-section section-padding">
+    <div class="container small-container">
+        <div class="review-form-card">
+            <h3 class="text-center">Share Your Experience</h3>
+            <p class="text-center">How was your stay at D'Calvins?</p>
+            
+            <form action="/submit-review" method="POST" class="review-form">
+                <div class="rating-input">
+                    <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+                    <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                    <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                    <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                    <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="message" rows="4" placeholder="Write your review here..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit-review">Post Review</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<%- include('footer') %>

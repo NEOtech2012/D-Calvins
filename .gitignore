@@ -1,0 +1,12 @@
+# Dependency folders (This folder is huge, never upload it!)
+node_modules/
+
+# Local data (This protects guest privacy)
+bookings.json
+
+# Environment variables (If you add Paystack keys later)
+.env
+
+# OS-generated files
+.DS_Store
+Thumbs.db

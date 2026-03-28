@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/png" href="/assets/d'calvins hotels.png">
+    <title><%= title %></title>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-container">
+       <div class="logo">
+       <img src="/assets/d'calvins hotels.png" alt="Logo" class="logo-img">
+        <span>D'Calvins Luxury Apartment</span>
+</div>
+
+        <nav class="nav-menu">
+            <ul>
+                <li class="<%= (locals.page_name && page_name === 'home') ? 'active' : '' %>">
+                    <a href="/"><i class="fas fa-house"></i> Home</a>
+                </li>
+                <li class="<%= page_name === 'rooms' ? 'active' : '' %>">
+                    <a href="/rooms"><i class="fas fa-bed"></i> Rooms</a>
+                </li>
+                <li class="<%= page_name === 'booking' ? 'active' : '' %>">
+                    <a href="/booking"><i class="fas fa-calendar-alt"></i> Book Now</a>
+                </li>
+                <li class="<%= page_name === 'contact' ? 'active' : '' %>">
+                    <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

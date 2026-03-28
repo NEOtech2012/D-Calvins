@@ -1,0 +1,36 @@
+<%- include('header') %>
+
+<main class="container section-padding">
+    <div class="room-details-intro">
+        <span class="tag">Luxury Living</span>
+        <h1><%= room.name %></h1>
+        <p class="large-desc"><%= room.description %></p>
+        
+        <div class="detail-price">
+            &#8358;<%= room.price %> <small>/ night</small>
+        </div>
+    </div>
+
+    <div class="details-gallery">
+        <div class="main-image">
+            <img src="/assets/<%= room.images[0] %>" alt="<%= room.name %>">
+        </div>
+        <div class="thumbnail-grid">
+            <% room.images.forEach(img => { %>
+                <img src="/assets/<%= img %>" class="thumb">
+            <% }) %>
+        </div>
+    </div>
+
+    <div class="features-section">
+        <h3>Room Amenities</h3>
+        <ul class="feature-list">
+            <% room.features.forEach(f => { %>
+                <li><i class="fas fa-check-circle"></i> <%= f %></li>
+            <% }) %>
+        </ul>
+        <a href="/booking?room=<%= room.name %>" class="btn-purple">Book This Room Now</a>
+    </div>
+</main>
+
+<%- include('footer') %>

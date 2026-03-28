@@ -1,0 +1,1068 @@
+:root {
+    --primary-purple: #4B0082;
+    --accent-yellow: #FFF9C4;
+    --dark-black: #1A1A1A;
+    --text-gray: #555;
+}
+
+/* Layout for the Header */
+.main-header {
+    background-color: #ffffff;
+    padding: 20px 5%; /* Generous padding for a luxury feel */
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* This pushes the nav to the right */
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark-black);
+}
+
+.logo i {
+    color: var(--primary-purple); /* Purple Icon */
+    margin-right: 12px;
+    font-size: 1.8rem;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-black);
+    gap: 12px; /* Space between logo image and text */
+}
+
+.logo-img {
+    height: 50px;    /* Adjust this height to fit your header perfectly */
+    width: auto;     /* This keeps the logo from stretching */
+    object-fit: contain;
+}
+
+/* If you want the text to be a specific color like your Purple */
+.logo span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-purple); 
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex; /* Makes the list horizontal */
+    gap: 35px;     /* Space between the links */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--gray-text);
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    transition: color 0.3s ease;
+}
+
+/* Hover and Active States */
+.nav-menu a:hover {
+    color: var(--primary-purple);
+}
+
+.nav-menu li.active a {
+    color: var(--primary-purple);
+    font-weight: 700;
+}
+
+/* Make the active icon background slightly yellow like the image highlight */
+.nav-menu li.active i {
+    color: var(--primary-purple);
+}
+
+/* home page css */
+
+/* Hero Styles */
+
+.hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden; /* Keeps the images inside the hero area */
+}
+
+/* The Animated Background Layer */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1; /* Puts the images behind your text */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* The Animation Trigger */
+    animation: heroSlider 10s infinite; 
+}
+
+@keyframes heroSlider {
+    0%, 30% {
+        background-image: url('/assets/entrace.png'); /* Image 1: Hotel Exterior */
+    }
+    33%, 63% {
+        /* Image 2: Deluxe Room View */
+        background-image: url('/assets/lounge-4.jpeg');
+    }
+    66%, 96% {
+        /* Image 3: Hotel Lobby/Lounge */
+        background-image: url('/assets/suite-2.png');
+    }
+    100% {
+        background-image: url('/assets/suite.png');
+    }
+}
+
+/* Darken the images so your white text is easy to read */
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+
+/* Buttons */
+.btn-yellow {
+    background: var(--primary-purple); /* Swapped for brand strength */
+    color: var(--accent-yellow);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+/* Centralizing the Header Text */
+.text-center {
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--dark-black);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 50px; /* Space before the icons start */
+}
+
+/* Features Grid Layout */
+.features-grid {
+    display: grid;
+    /* This creates two equal columns */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px; /* Space between the items */
+    margin-top: 50px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Icon Styling - Purple on Yellow Circle */
+.icon-circle {
+    background-color: var(--light-yellow); /* Light Yellow Background */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease;
+}
+
+.icon-circle i {
+    color: var(--primary-purple); /* Purple Icon */
+    font-size: 2rem;
+}
+
+/* Text Styling */
+.feature-item h3 {
+    color: var(--dark-black);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.feature-item p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Hover effect to make it feel premium */
+.feature-item:hover .icon-circle {
+    transform: scale(1.1);
+    background-color: var(--primary-purple);
+}
+
+.feature-item:hover .icon-circle i {
+    color: white;
+}
+
+/* Responsive fix: On small screens (phones), stack them back up */
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Section Styling */
+.section-padding { padding: 80px 10%; }
+.section-title { color: var(--dark-black); font-size: 2.5rem; }
+.section-subtitle { color: var(--text-gray); margin-bottom: 40px; }
+
+/* Room Cards */
+/* Container for the cards */
+.rooms-container {
+    display: flex;
+    justify-content: center; /* Centers the row of cards */
+    gap: 25px;               /* Space between cards */
+    flex-wrap: wrap;         /* Allows cards to drop to next line on mobile */
+    padding: 20px 0;
+}
+
+/* Individual Card Styling */
+.room-card {
+    background: #fff;
+    border-radius: 15px;
+    width: 350px;            /* Fixed width for consistency */
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+}
+
+.room-image img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;       /* Ensures images aren't stretched */
+}
+
+.room-content {
+    padding: 20px;
+}
+
+.room-content h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--dark-black);
+}
+
+.bed-type {
+    color: #777;
+    margin: 10px 0 20px 0;
+}
+
+/* Footer of the card with Price and Button */
+.room-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.price {
+    color: var(--primary-purple);
+    font-size: 1.2rem;
+}
+
+.btn-book {
+    background-color: var(--primary-purple);
+    color: var(--light-yellow);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.btn-book:hover {
+    background-color: var(--dark-black);
+    color: #fff;
+}
+
+.room-info { padding: 20px; }
+.price { color: var(--primary-purple); font-size: 1.5rem; font-weight: bold; }
+.btn-book-small {
+    background: var(--primary-purple);
+    color: var(--accent-yellow);
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.review-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 30px;
+    width: 320px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: var(--accent-yellow);
+}
+
+.stars {
+    color: #FFD700; /* Gold/Yellow for stars */
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.review-text {
+    font-style: italic;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Ensures names align even if text length differs */
+}
+
+.guest-name {
+    color: var(--primary-purple); /* Brand Purple */
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Review Form Styling */
+.small-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.review-form-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid var(--accent-yellow);
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: var(--primary-purple);
+}
+
+/* Interactive Stars Logic */
+.rating-input {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-size: 2rem;
+    gap: 5px;
+}
+
+.rating-input input { display: none; }
+
+.rating-input label {
+    cursor: pointer;
+    color: #ddd;
+    transition: 0.3s;
+}
+
+.rating-input input:checked ~ label,
+.rating-input label:hover,
+.rating-input label:hover ~ label {
+    color: #FFD700; /* Gold/Yellow when selected */
+}
+
+/* Submit Button */
+.btn-submit-review {
+    background-color: var(--primary-purple);
+    color: var(--light-yellow);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit-review:hover {
+    background-color: var(--dark-black);
+    transform: translateY(-2px);
+}
+
+/* Rooms Hero */
+.rooms-hero {
+    background: linear-gradient(var(--primary-purple), var(--dark-black));
+    padding: 100px 10%;
+    text-align: center;
+    color: var(--accent-yellow);
+}
+
+/* The Grid */
+.rooms-grid-page {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: -50px; /* Pulls cards up into the hero slightly */
+}
+
+.room-card-large {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.room-img-wrapper {
+    position: relative;
+    height: 250px;
+}
+
+.room-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.room-price-tag {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-purple);
+    color: var(--accent-yellow);
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.room-details-page {
+    padding: 30px;
+}
+
+.room-details-page h3 {
+    font-size: 1.6rem;
+    color: var(--dark-black);
+    margin-bottom: 15px;
+}
+
+.room-amenities-text {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.room-features-list {
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.room-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-purple {
+    background: var(--primary-purple);
+    color: var(--accent-yellow);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.btn-text {
+    color: var(--primary-purple);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.booking-hero {
+    background: var(--dark-black);
+    padding: 60px 0;
+    text-align: center;
+    color: var(--accent-yellow);
+}
+
+.booking-flex-container {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.booking-form-wrapper {
+    flex: 2;
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.booking-summary {
+    flex: 1;
+    background: var(--accent-yellow);
+    padding: 30px;
+    border-radius: 15px;
+    color: var(--dark-black);
+}
+
+.booking-summary h3 { color: var(--primary-purple); }
+
+.hotel-form label {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-purple);
+}
+
+/* The Grid Layout */
+.hotel-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 25px 30px; /* Space between rows and columns */
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 0 0 50%; /* Do not grow, do not shrink, stay at exactly 50% */
+    box-sizing: border-box; /* Ensures padding doesn't break the 50% width */
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.btn-confirm-booking {
+    width: 100%;
+    background: var(--primary-purple);
+    color: var(--accent-yellow);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-confirm-booking:hover {
+    background: var(--dark-black);
+    transform: translateY(-2px);
+}
+
+/* Contact Hero */
+.contact-hero {
+    background: var(--dark-black);
+    color: var(--accent-yellow);
+    text-align: center;
+    padding: 80px 0;
+}
+
+/* Main Wrapper */
+.contact-wrapper {
+    display: flex;
+    gap: 50px;
+    align-items: stretch;
+}
+
+/* Info Panel (Left) */
+.contact-info-panel {
+    flex: 1;
+    background: var(--dark-black);
+    color: #fff;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.info-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.info-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-purple);
+    color: var(--accent-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.info-text h3 {
+    color: var(--accent-yellow);
+    margin-bottom: 5px;
+}
+
+.social-links {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: var(--accent-yellow);
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-purple);
+}
+
+/* Form Card (Right) */
+.contact-form-card {
+    flex: 2;
+    background: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-form-card h2 {
+    color: var(--primary-purple);
+    margin-bottom: 30px;
+}
+
+.btn-submit-contact {
+    background: var(--primary-purple);
+    color: var(--accent-yellow);
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit-contact:hover {
+    background: var(--dark-black);
+    color: #fff;
+}
+/* --- Responsive Design for room details Page --- */
+.room-details-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.room-details-intro h1 {
+    font-size: 3rem;
+    color: var(--primary-purple);
+    margin: 10px 0;
+}
+
+.large-desc {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+.detail-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--dark-black);
+    margin-top: 20px;
+}
+
+.details-gallery {
+    margin-bottom: 50px;
+}
+
+.main-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.thumbnail-grid {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.thumb {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.thumb:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contact-wrapper { flex-direction: column; }
+}
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
+/* Sidebar Styling */
+.admin-sidebar {
+    width: 250px;
+    background: var(--dark-black);
+    color: white;
+    padding: 30px 0;
+}
+
+.sidebar-user {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333;
+}
+
+.avatar {
+    width: 70px;
+    height: 60px;
+    background: var(--primary-purple);
+    color: var(--accent-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-weight: bold;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 15px 25px;
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar-nav a.active, .sidebar-nav a:hover {
+    background: var(--primary-purple);
+    color: white;
+}
+
+/* Main Content Area */
+.admin-main {
+    flex: 1;
+    padding: 40px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-purple);
+}
+
+/* Table Styling */
+.admin-table {
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.status-tag.paid { color: green; font-weight: bold; }
+.status-tag.pending { color: orange; font-weight: bold; }
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #e74c3c; /* Red color */
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    color: #c0392b;
+    transform: scale(1.2);
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* Footer Styles */
+
+.main-footer {
+    background-color: var(--dark-black);
+    color: #bbb; /* Softer white for general text */
+    padding: 60px 10% 20px 10%;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.footer-logo i {
+    color: var(--primary-purple);
+    font-size: 1.5rem;
+}
+
+.footer-logo span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.footer-column h3 {
+    color: var(--accent-yellow); /* Yellow headings like the image */
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--primary-purple);
+    padding-left: 5px;
+}
+
+.footer-column p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* --- MOBILE RESPONSIVENESS (768px and below) --- */
+@media (max-width: 768px) {
+    
+    /* 1. General Spacing */
+    .container {
+        padding: 0 20px;
+    }
+    .section-padding {
+        padding: 50px 0;
+    }
+
+    /* 2. Header & Navigation */
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* 3. The Home Page Grid (Why Choose Us) */
+    .features-grid {
+        grid-template-columns: 1fr; /* 1 column instead of 2 */
+        gap: 30px;
+    }
+
+    /* 4. The Rooms & Reviews Cards */
+    .rooms-container, .reviews-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .room-card, .review-card {
+        width: 100%; /* Take full width on phone */
+        max-width: 100%;
+    }
+
+    /* 5. The Booking Page (Split Screen Fix) */
+    .booking-split-container {
+        flex-direction: column; /* Summary moves above the form */
+        gap: 30px;
+    }
+    .booking-room-summary, .booking-form-wrapper {
+        width: 100%;
+        flex: none;
+    }
+    .booking-room-summary {
+        position: relative; /* Stop it from being 'sticky' on mobile */
+        top: 0;
+    }
+
+    /* 6. Form Rows (Names, Dates) */
+    .form-row {
+        flex-direction: column; /* Inputs stack on top of each other */
+        gap: 0;
+    }
+
+    /* 7. The Footer */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    /* 8. Text Sizes */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    /* 9. MedSpa Featured Box */
+    .featured-amenity-box {
+        flex-direction: column;
+    }
+    .featured-text {
+        padding: 30px;
+    }
+}

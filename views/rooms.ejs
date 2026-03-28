@@ -1,0 +1,30 @@
+<%- include('header') %>
+
+<section class="rooms-hero">
+    <h1>Our Luxury Accommodations</h1>
+    <p>Find the perfect space for your stay in Abuja.</p>
+</section>
+
+<main class="container section-padding">
+    <div class="rooms-grid-page">
+        <% rooms.forEach(room => { %>
+            <div class="room-card-large">
+                <div class="room-img-wrapper">
+                    <img src="/assets/<%= room.image %>" alt="<%= room.name %>">
+                    <div class="room-price-tag">₦<%= room.price %> / night</div>
+                </div>
+                <div class="room-details-page">
+                    <h3><%= room.name %></h3>
+                    <p class="room-amenities-text"><i class="fas fa-bed"></i> <%= room.beds %></p>
+                    <p class="room-features-list"><%= room.features %></p>
+                    <div class="room-actions">
+                        <a href="/booking?room=<%= room.name %>" class="btn-purple">Book This Room</a>
+                       <a href="/room-details?name=<%= room.name %>" class="btn-text">View Details</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</main>
+
+<%- include('footer') %>

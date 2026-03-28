@@ -1,0 +1,66 @@
+<%- include('header') %>
+
+<section class="booking-hero">
+    <h1>Reserve Your Sanctuary</h1>
+</section>
+
+<main class="container section-padding">
+    <div class="booking-flex-container">
+        <div class="booking-form-wrapper">
+            <h2>Guest Information</h2>
+            <form action="/confirm-booking" method="POST" class="hotel-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="guestName" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="guestPhone" placeholder="08012345678" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Selected Accommodation</label>
+                       <label><i class="fas fa-bed"></i> Room Type </label>
+                   <select name="roomType" class="custom-select">
+                     <option value="Standard" <%= room.name === 'Standard' ? 'selected' : '' %>>Standard - ₦15,000</option>
+                     <option value="Executive" <%= room.name === 'Executive' ? 'selected' : '' %>>Executive - ₦18,000</option>
+                     <option value="Luxury" <%= room.name === 'Luxury' ? 'selected' : '' %>>Luxury - ₦25,000</option>
+                     <option value="VIP Suite" <%= room.name === 'VIP Suite' ? 'selected' : '' %>>VIP Suite - ₦35,000</option>
+                     <option value="VIP LOUNGE" <%= room.name === 'VIP LOUNGE' ? 'selected' : '' %>>VIP LOUNGE - ₦45,000</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Check-In Date</label>
+                        <input type="date" name="checkIn" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Check-Out Date</label>
+                        <input type="date" name="checkOut" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-confirm-booking">Book Now</button>
+            </form>
+        </div>
+
+        <aside class="booking-summary">
+            <h3>Why Book Direct?</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Best Rate Guaranteed</li>
+                <li><i class="fas fa-check"></i> Free High-Speed Wi-Fi</li>
+                <li><i class="fas fa-check"></i> Welcome Drink on Arrival</li>
+                <li><i class="fas fa-check"></i> Flexible Cancellation</li>
+            </ul>
+            <div class="help-box">
+                <p>Need help? Call us:</p>
+                <strong>+234 800 CALVINS</strong>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<%- include('footer') %>
