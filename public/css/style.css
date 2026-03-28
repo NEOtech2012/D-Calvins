@@ -1077,28 +1077,6 @@
 .stat-card, .room-card {
     flex: 1 1 300px; /* This tells cards: "Try to be 300px wide, but grow/shrink to fit" */
 }
-
-@media (max-width: 768px) {
-    /* Hide the sidebar on mobile and make the main content full width */
-    .dashboard-wrapper {
-        flex-direction: column;
-    }
-    
-    .admin-sidebar {
-        width: 100%;
-        height: auto;
-    }
-
-    .admin-main {
-        padding: 10px;
-    }
-
-    /* Make images fit the screen */
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-}
 /* --- Receipt & Thank You Page Styling --- */
 
 .receipt-container {
@@ -1270,5 +1248,41 @@
 @media (max-width: 768px) {
     .account-info {
         font-size: 0.95rem; /* Slightly smaller text for phones */
+    }
+}
+
+/* --- EMERGENCY MOBILE FIX --- */
+@media (max-width: 768px) {
+    /* Force everything to stay inside the screen */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Stack the receipt and account box */
+    .receipt-container, .account-details-box, .receipt-card {
+        width: 95% !important;
+        margin: 10px auto !important;
+        padding: 15px !important;
+        box-sizing: border-box;
+    }
+
+    /* Scale down large titles */
+    h1 { font-size: 1.8rem !important; }
+    h2 { font-size: 1.5rem !important; }
+
+    /* Make the receipt text smaller so it doesn't wrap weirdly */
+    .receipt-card {
+        font-size: 0.85rem;
+    }
+    
+    .hotel-name-receipt {
+        font-size: 1.1rem !important;
+    }
+
+    /* Ensure images don't stretch the screen */
+    img {
+        max-width: 100%;
+        height: auto;
     }
 }
