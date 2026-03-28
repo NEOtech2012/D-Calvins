@@ -1,38 +1,44 @@
+/* --- 1. GLOBAL SETTINGS & VARIABLES --- */
 :root {
     --primary-purple: #4B0082;
     --accent-yellow: #FFF9C4;
+    --light-yellow: #fdfae1; /* Added missing variable */
     --dark-black: #1A1A1A;
     --text-gray: #555;
+    --white: #ffffff;
 }
 
-/* Layout for the Header */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial for preventing horizontal scroll */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-black);
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+}
+
+/* --- 2. HEADER & NAVIGATION --- */
 .main-header {
-    background-color: #ffffff;
-    padding: 20px 5%; /* Generous padding for a luxury feel */
+    background-color: var(--white);
+    padding: 20px 5%;
     border-bottom: 1px solid #eee;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header-container {
     display: flex;
-    justify-content: space-between; /* This pushes the nav to the right */
+    justify-content: space-between;
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--dark-black);
-}
-
-.logo i {
-    color: var(--primary-purple); /* Purple Icon */
-    margin-right: 12px;
-    font-size: 1.8rem;
 }
 
 .logo a {
@@ -40,16 +46,15 @@
     align-items: center;
     text-decoration: none;
     color: var(--dark-black);
-    gap: 12px; /* Space between logo image and text */
+    gap: 12px;
 }
 
 .logo-img {
-    height: 50px;    /* Adjust this height to fit your header perfectly */
-    width: auto;     /* This keeps the logo from stretching */
+    height: 50px;
+    width: auto;
     object-fit: contain;
 }
 
-/* If you want the text to be a specific color like your Purple */
 .logo span {
     font-size: 1.4rem;
     font-weight: 700;
@@ -58,42 +63,26 @@
 
 .nav-menu ul {
     list-style: none;
-    display: flex; /* Makes the list horizontal */
-    gap: 35px;     /* Space between the links */
-    margin: 0;
-    padding: 0;
+    display: flex;
+    gap: 35px;
 }
 
 .nav-menu a {
     text-decoration: none;
-    color: var(--gray-text);
+    color: var(--text-gray); /* Fixed variable name mismatch */
     font-size: 1rem;
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between icon and text */
+    gap: 10px;
     transition: color 0.3s ease;
 }
 
-/* Hover and Active States */
-.nav-menu a:hover {
+.nav-menu a:hover, .nav-menu li.active a {
     color: var(--primary-purple);
 }
 
-.nav-menu li.active a {
-    color: var(--primary-purple);
-    font-weight: 700;
-}
-
-/* Make the active icon background slightly yellow like the image highlight */
-.nav-menu li.active i {
-    color: var(--primary-purple);
-}
-
-/* home page css */
-
-/* Hero Styles */
-
+/* --- 3. HERO SECTION & SLIDER --- */
 .hero {
     height: 90vh;
     display: flex;
@@ -102,56 +91,32 @@
     text-align: center;
     color: white;
     position: relative;
-    overflow: hidden; /* Keeps the images inside the hero area */
+    overflow: hidden;
 }
 
-/* The Animated Background Layer */
 .hero::before {
     content: "";
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    z-index: -1; /* Puts the images behind your text */
+    z-index: -1;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-    /* The Animation Trigger */
     animation: heroSlider 10s infinite; 
 }
 
 @keyframes heroSlider {
-    0%, 30% {
-        background-image: url('/assets/entrace.png'); /* Image 1: Hotel Exterior */
-    }
-    33%, 63% {
-        /* Image 2: Deluxe Room View */
-        background-image: url('/assets/lounge-4.jpeg');
-    }
-    66%, 96% {
-        /* Image 3: Hotel Lobby/Lounge */
-        background-image: url('/assets/suite-2.png');
-    }
-}
-
-/* Darken the images so your white text is easy to read */
-.hero-overlay {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 40px;
-    border-radius: 15px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    0%, 30% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/entrace.png'); }
+    33%, 63% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/lounge-4.jpeg'); }
+    66%, 96% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/suite-2.png'); }
 }
 
 .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
 
-/* Buttons */
+/* --- 4. BUTTONS & UI ELEMENTS --- */
 .btn-yellow {
-    background: var(--primary-purple); /* Swapped for brand strength */
+    background: var(--primary-purple);
     color: var(--accent-yellow);
     padding: 12px 25px;
     text-decoration: none;
@@ -170,111 +135,148 @@
     backdrop-filter: blur(5px);
 }
 
-@media (max-width: 600px) {
-    .hero h1 {
-        font-size: 2rem !important; /* Shrinks the text so it doesn't push buttons off */
-    }
-    
-    .hero-btns {
-        flex-direction: column; /* On small phones, stack them vertically */
-        align-items: center;
-    }
+/* --- 5. FEATURES & GRID LAYOUTS --- */
+.section-padding { padding: 80px 10%; }
+.text-center { text-align: center; }
 
-    .btn-yellow, .btn-outline {
-        width: 100%;       /* Make buttons full-width on mobile */
-        max-width: 280px;  /* But don't let them get too giant */
-    }
-}
-
-/* Centralizing the Header Text */
-.text-center {
-    text-align: center;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    color: var(--dark-black);
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-.section-subtitle {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 50px; /* Space before the icons start */
-}
-
-/* Features Grid Layout */
 .features-grid {
     display: grid;
-    /* This creates two equal columns */
     grid-template-columns: repeat(2, 1fr); 
-    gap: 40px; /* Space between the items */
-    margin-top: 50px;
+    gap: 40px;
     max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 50px auto 0;
 }
 
-.feature-item {
-    text-align: center;
-    padding: 20px;
-}
-
-/* Icon Styling - Purple on Yellow Circle */
 .icon-circle {
-    background-color: var(--light-yellow); /* Light Yellow Background */
-    width: 80px;
-    height: 80px;
+    background-color: var(--light-yellow);
+    width: 80px; height: 80px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
-    transition: transform 0.3s ease;
+    transition: 0.3s;
 }
 
-.icon-circle i {
-    color: var(--primary-purple); /* Purple Icon */
-    font-size: 2rem;
-}
-
-/* Text Styling */
-.feature-item h3 {
-    color: var(--dark-black);
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-.feature-item p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 1rem;
-}
-
-/* Hover effect to make it feel premium */
 .feature-item:hover .icon-circle {
     transform: scale(1.1);
     background-color: var(--primary-purple);
 }
 
-.feature-item:hover .icon-circle i {
+.feature-item:hover .icon-circle i { color: white; }
+
+/* --- 6. ROOMS & CARDS --- */
+.rooms-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+.room-card {
+    background: #fff;
+    border-radius: 15px;
+    width: 350px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+
+.room-image img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+/* --- 7. REVIEWS & RATING --- */
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.review-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 320px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    border: 1px solid #eee;
+}
+
+/* --- 8. RECEIPT & BOOKING --- */
+.receipt-container {
+    background: var(--dark-black);
+    padding: 40px 20px;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 40px auto;
+    border: 1px solid var(--accent-yellow);
+}
+
+.receipt-card {
+    background: white;
+    padding: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 4px;
+    color: black;
+}
+
+.total-row {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-top: 2px dashed #000;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* --- 9. DASHBOARD / ADMIN --- */
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
+.admin-sidebar {
+    width: 250px;
+    background: var(--dark-black);
     color: white;
+    padding: 30px 0;
 }
 
-/* Responsive fix: On small screens (phones), stack them back up */
-@media (max-width: 768px) {
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
+.avatar {
+    width: 70px; height: 70px;
+    background: var(--primary-purple);
+    color: var(--accent-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
 }
 
-/* Section Styling */
-.section-padding { padding: 80px 10%; }
-.section-title { color: var(--dark-black); font-size: 2.5rem; }
-.section-subtitle { color: var(--text-gray); margin-bottom: 40px; }
 
+/* Hover and Active States */
+.nav-menu a:hover {
+    color: var(--primary-purple);
+}
+
+.nav-menu li.active a {
+    color: var(--primary-purple);
+    font-weight: 700;
+}
+
+/* Make the active icon background slightly yellow like the image highlight */
+.nav-menu li.active i {
+    color: var(--primary-purple);
+}
+
+/* home page css */
 /* Room Cards */
 /* Container for the cards */
 .rooms-container {
@@ -1647,3 +1649,84 @@
     }
 }
 
+/* --- 10. MOBILE RESPONSIVENESS (THE MAIN FIXES) --- */
+@media (max-width: 768px) {
+    /* Header Fix */
+    .header-container {
+        flex-direction: row-reverse !important;
+        justify-content: space-between !important;
+        padding: 10px 15px !important;
+    }
+
+    .menu-toggle {
+        display: flex !important;
+        z-index: 9999;
+    }
+
+    /* Side Navigation Drawer */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--dark-black);
+        padding: 80px 20px;
+        transition: 0.4s ease-in-out;
+        z-index: 1000;
+    }
+
+    .nav-menu.active { left: 0; }
+
+    .nav-menu ul {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    /* General Stack Fix */
+    .features-grid, 
+    .booking-flex-container,
+    .contact-wrapper,
+    .rooms-container,
+    .reviews-container {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    /* Card Sizing */
+    .room-card, .review-card, .booking-form-wrapper, .contact-form-card {
+        width: 95% !important;
+        max-width: 100% !important;
+        margin: 10px auto !important;
+    }
+
+    /* Form Correction */
+    .hotel-form-grid, .form-row {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .form-group {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .hotel-form label {
+        display: block !important;
+        text-align: left !important;
+    }
+
+    .hero h1 { font-size: 1.8rem !important; }
+}
+
+/* Printing logic */
+@media print {
+    body * { visibility: hidden; }
+    .receipt-card, .receipt-card * { visibility: visible; }
+    .receipt-card { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; }
+}
