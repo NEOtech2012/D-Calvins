@@ -1066,3 +1066,36 @@
         padding: 30px;
     }
 }
+
+/* This makes items stack vertically on phones */
+.stats-grid, .rooms-grid, .row {
+    display: flex;
+    flex-wrap: wrap; /* This is the key! */
+    gap: 20px;
+}
+
+.stat-card, .room-card {
+    flex: 1 1 300px; /* This tells cards: "Try to be 300px wide, but grow/shrink to fit" */
+}
+
+@media (max-width: 768px) {
+    /* Hide the sidebar on mobile and make the main content full width */
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+    
+    .admin-sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .admin-main {
+        padding: 10px;
+    }
+
+    /* Make images fit the screen */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
