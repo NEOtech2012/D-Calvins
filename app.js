@@ -201,6 +201,16 @@ app.post('/send-message', (req, res) => {
     res.send('Thank you! Your message has been sent to D\'Calvins.');
 });
 
+// Assuming you have express and body-parser set up
+// This catches the "Post Review" click
+app.post('/submit-review', (req, res) => {
+    // We aren't saving the data, just showing the success page
+    res.render('well-done', { 
+        title: "Review Received",
+        page_name: "well-done" 
+    });
+});
+
 // --- SERVER START ---
 app.listen(PORT, () => {
     console.log(`Hotel site is live at http://localhost:${PORT}`);

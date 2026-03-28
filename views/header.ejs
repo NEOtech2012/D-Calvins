@@ -12,10 +12,16 @@
 
 <header class="main-header">
     <div class="header-container">
-       <div class="logo">
-       <img src="/assets/d'calvins hotels.png" alt="Logo" class="logo-img">
-        <span>D'Calvins Luxury Apartment</span>
-</div>
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/d'calvins hotels.png" alt="Logo" class="logo-img">
+                <span>D'Calvins Luxury Apartment</span>
+            </a>
+        </div>
+
+        <button class="menu-toggle" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
 
         <nav class="nav-menu">
             <ul>
@@ -35,3 +41,42 @@
         </nav>
     </div>
 </header>
+
+<div class="menu-overlay"></div>
+
+<script>
+    // Select elements once
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const overlay = document.querySelector('.menu-overlay');
+    const menuIcon = menuToggle.querySelector('i');
+
+    // Single function to handle opening/closing
+    function toggleMenu() {
+        navMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        // Handle icon swap
+        if (navMenu.classList.contains('active')) {
+            menuIcon.classList.replace('fa-bars', 'fa-times');
+        } else {
+            menuIcon.classList.replace('fa-times', 'fa-bars');
+        }
+    }
+
+    // Event Listeners
+    menuToggle.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu); 
+
+    // Close menu when a link is clicked (useful for single-page or slow loads)
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            menuIcon.classList.replace('fa-times', 'fa-bars');
+        });
+    });
+</script>
+
+</body>
+</html>

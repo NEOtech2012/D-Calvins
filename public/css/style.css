@@ -173,6 +173,22 @@
     backdrop-filter: blur(5px);
 }
 
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2rem !important; /* Shrinks the text so it doesn't push buttons off */
+    }
+    
+    .hero-btns {
+        flex-direction: column; /* On small phones, stack them vertically */
+        align-items: center;
+    }
+
+    .btn-yellow, .btn-outline {
+        width: 100%;       /* Make buttons full-width on mobile */
+        max-width: 280px;  /* But don't let them get too giant */
+    }
+}
+
 /* Centralizing the Header Text */
 .text-center {
     text-align: center;
@@ -1251,38 +1267,373 @@
     }
 }
 
-/* --- EMERGENCY MOBILE FIX --- */
+/* --- MOBILE RESIZING FIXES --- */
+
 @media (max-width: 768px) {
-    /* Force everything to stay inside the screen */
+    /* 1. Prevent side-scrolling */
     html, body {
         overflow-x: hidden;
         width: 100%;
+        position: relative;
     }
 
-    /* Stack the receipt and account box */
-    .receipt-container, .account-details-box, .receipt-card {
-        width: 95% !important;
+    /* 2. Fix the Header & Logo */
+    .header-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    /* 3. Fix the Hero Section */
+    .hero h1 {
+        font-size: 2rem; /* Shorter title for phones */
+    }
+    .hero-overlay {
+        padding: 20px;
+    }
+
+    /* 4. Fix Grid & Container Widths (The most important part) */
+    .features-grid, 
+    .rooms-container, 
+    .reviews-container, 
+    .booking-flex-container,
+    .contact-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 20px 10px !important;
+    }
+
+    /* 5. Force Cards to fit the phone screen */
+    .room-card, 
+    .review-card, 
+    .room-card-large,
+    .booking-form-wrapper,
+    .booking-summary,
+    .contact-info-panel,
+    .contact-form-card,
+    .receipt-container,
+    .account-details-box {
+        width: 95% !important; /* Forces it to stay inside the screen */
+        max-width: 100% !important;
         margin: 10px auto !important;
+        flex: none !important; /* Breaks the 'fixed 50%' rule */
+    }
+
+    /* 6. Fix Form Rows (Booking/Contact) */
+    /* Force the booking form to go straight down */
+.hotel-form-grid, .form-row {
+    display: flex !important;
+    flex-direction: column !important; /* Forces vertical stack */
+    width: 100% !important;
+    gap: 15px !important;
+}
+
+.form-group {
+    width: 100% !important; /* Makes every input box full width */
+    flex: none !important;
+    padding: 0 !important;
+    margin-bottom: 10px;
+    flex: 1 1 100%; /* Forces items to take full width on small screens */
+}
+
+/* Fix the 'Selected Accommodation' alignment */
+.hotel-form label {
+    display: block !important; /* Removes the 2-column grid from labels */
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+/* Ensure the white card itself isn't too small */
+.booking-form-wrapper {
+    width: 95% !important;
+    padding: 20px 15px !important;
+    margin: 0 auto !important;
+}
+
+/* Make the button look better on mobile */
+.btn-confirm-booking {
+    width: 100% !important;
+    margin-top: 20px;
+}
+
+/* --- THE ULTIMATE MOBILE FIX (768px and below) --- */
+
+@media (max-width: 768px) {
+    /* 1. Reset Containers & Grids */
+    .booking-flex-container, 
+    .contact-wrapper,
+    .features-grid,
+    .rooms-container,
+    .reviews-container,
+    .hotel-form-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 10px !important;
+        gap: 20px !important;
+    }
+
+    /* 2. Fix Form Labels (Crucial: This was breaking your alignment) */
+    .hotel-form label {
+        display: block !important; /* Removes the 1fr 1fr grid that squashed text */
+        width: 100% !important;
+        text-align: left !important;
+        margin-bottom: 5px !important;
+    }
+
+    /* 3. Force all inputs and groups to 100% width */
+    .form-group, 
+    .form-row,
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 12px !important; /* Ensure consistent inner padding */
+        box-sizing: border-box !important;
+    }
+
+    /* 4. Center the Form Card */
+    .booking-form-wrapper, 
+    .contact-form-card, 
+    .review-form-card {
+        width: 95% !important;
+        margin: 0 auto !important;
+        padding: 20px 15px !important;
+        box-sizing: border-box !important;
+        float: none !important;
+    }
+
+    /* 5. Fix the Hero Text */
+    .hero h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2;
+    }
+
+    /* 6. Receipt & Summary centering */
+    .receipt-container, 
+    .booking-summary, 
+    .account-details-box {
+        width: 95% !important;
+        margin: 20px auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 7. Navigation Fix */
+    .nav-menu ul {
+        flex-direction: column !important;
+        gap: 15px !important;
+        text-align: center !important;
+    }
+}
+
+    /* 7. Image Resizing */
+    .room-image img, .main-image img {
+        height: auto !important;
+        max-height: 250px;
+    }
+
+    /* 8. Receipt Specifics */
+    .receipt-card {
+        width: 100% !important;
         padding: 15px !important;
+        font-size: 0.85rem;
+    }
+    .receipt-details p {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+@media (max-width: 600px) {
+    .datetime-group {
+        grid-template-columns: 1fr; /* Stacks vertically */
+        gap: 15px; /* Adds a little more space between the stacked fields */
+    }
+}
+
+/* Desktop: Hide the toggle button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-purple);
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show hamburger button */
+        z-index: 1001; /* Stay above the sidebar */
+    }
+
+    .nav-menu {
+        display: block; /* Always block, but hidden off-screen */
+        position: fixed;
+        top: 0;
+        left: -280px; /* Start off-screen (adjust width as needed) */
+        width: 250px;
+        height: 100vh;
+        background: var(--dark-black); /* Matching your dashboard dark theme */
+        padding: 80px 20px;
+        transition: 0.4s ease-in-out; /* The slide effect */
+        z-index: 1000;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    /* When active, slide to 0 (visible) */
+    .nav-menu.active {
+        left: 0;
+    }
+
+    /* Stack items vertically inside the slide-out */
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    /* Style the links to look like the dashboard items in your image */
+    .nav-menu a {
+        color: #bbb;
+        padding: 15px;
+        border-radius: 8px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Purple background for active item like your image */
+    .nav-menu li.active a, .nav-menu a:hover {
+        background-color: var(--primary-purple);
+        color: white;
+    }
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        display: flex !important;
+        /* row-reverse puts the menu-toggle first (left) and logo second (right) */
+        flex-direction: row-reverse !important; 
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 15px !important;
+        text-align: left !important;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .logo-img {
+        height: 40px; /* Smaller for mobile */
+    }
+
+    .logo span {
+        font-size: 1.1rem; /* Shrink text so it fits on one line */
+        white-space: nowrap;
+    }
+
+    .menu-toggle {
+        display: block !important;
+        margin: 0; /* Remove any centering margins */
+        order: 1;  /* Force it to be the first item visually */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Hidden off-screen to the left */
+        width: 280px;
+        height: 100vh;
+        background: var(--dark-black);
+        transition: 0.4s ease-in-out;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        left: 0; /* Slides into view */
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-summary { /* Or whatever class your yellow box uses */
+        width: 90% !important;
+        max-width: 400px;
+        margin: 20px auto !important; /* This centers it */
+        padding: 25px !important;
+        box-sizing: border-box;
+        text-align: left; /* Keep text left-aligned inside the centered box */
+    }
+
+    .booking-summary ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .booking-summary li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem; /* Slightly smaller to prevent cutting off */
+    }
+}
+
+@media (max-width: 768px) {
+    .reviews-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centers the cards in the row */
+        width: 100%;
+    }
+
+    .review-card {
+        width: 90% !important; /* Card takes up 90% of screen width */
+        margin: 15px 0 !important;
+        padding: 20px !important;
         box-sizing: border-box;
     }
 
-    /* Scale down large titles */
-    h1 { font-size: 1.8rem !important; }
-    h2 { font-size: 1.5rem !important; }
-
-    /* Make the receipt text smaller so it doesn't wrap weirdly */
-    .receipt-card {
-        font-size: 0.85rem;
-    }
-    
-    .hotel-name-receipt {
-        font-size: 1.1rem !important;
-    }
-
-    /* Ensure images don't stretch the screen */
-    img {
-        max-width: 100%;
-        height: auto;
+    .review-text {
+        font-size: 1rem !important;
+        line-height: 1.5;
+        word-wrap: break-word; /* Forces long words to wrap */
+        overflow-wrap: break-word;
     }
 }
+
