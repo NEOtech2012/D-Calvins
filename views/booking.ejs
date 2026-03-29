@@ -64,3 +64,13 @@
 </main>
 
 <%- include('footer') %>
+
+<script>
+    const checkInInput = document.querySelector('input[name="checkIn"]');
+    const checkOutInput = document.querySelector('input[name="checkOut"]');
+
+    checkInInput.addEventListener('change', () => {
+        // Set the minimum check-out date to be the day after check-in
+        checkOutInput.min = checkInInput.value;
+    });
+</script>

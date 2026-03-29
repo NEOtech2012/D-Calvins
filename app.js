@@ -90,21 +90,42 @@ app.get('/booking', (req, res) => {
 
 // 5. Submit Booking (POST)
 app.post('/confirm-booking', (req, res) => {
-    // 1. Pull guestPhone out of the request body
-    const { guestName, roomType, guestPhone } = req.body; 
+    const { guestName, roomType, guestPhone, checkIn, checkOut } = req.body; 
 
     const priceMap = {
-        'Standard': "15,000", 'Executive': "18,000", 
-        'Luxury': "25,000", 'VIP Suite': "35,000", 'VIP LOUNGE': "45,000"
+        'Standard': 15000, 
+        'Executive': 18000, 
+        'Luxury': 25000, 
+        'VIP Suite': 35000, 
+        'VIP LOUNGE': 45000
     };
+
+    // 1. Calculate the number of days
+    const date1 = new Date(checkIn);
+    const date2 = new Date(checkOut);
+    
+    // Calculate the difference in milliseconds and convert to days
+    const diffTime = Math.abs(date2 - date1);
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    // Safety check: if check-in/out are the same day, count as 1 night
+    if (diffDays === 0) diffDays = 1;
+
+    // 2. Calculate the Total
+    const nightlyRate = priceMap[roomType] || 15000;
+    const totalAmount = nightlyRate * diffDays;
 
     const newBooking = {
         id: "DC" + Math.floor(Math.random() * 900 + 100),
         guest: guestName,
-        phone: guestPhone, // <--- 2. ADD THIS LINE TO THE OBJECT
+        phone: guestPhone,
         room: roomType || "Standard Room",
+        checkIn: checkIn,
+        checkOut: checkOut,
+        nights: diffDays,
         status: "Paid",
-        amount: priceMap[roomType] || "15,000"
+        // Format the amount back to a string with commas for the UI
+        amount: totalAmount.toLocaleString() 
     };
 
     hotelBookings.unshift(newBooking);
