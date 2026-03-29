@@ -1362,6 +1362,23 @@ body {
     margin-top: 20px;
 }
 
+@media (max-width: 600px) {
+    .hero-btns {
+        display: flex;
+        flex-direction: column; /* This stacks them vertically */
+        align-items: center;    /* Centers them horizontally */
+        gap: 15px;              /* Adds space between the top and bottom button */
+        width: 100%;            /* Ensures the container spans the width */
+    }
+
+    .btn-yellow, .btn-outline {
+        width: 100%;            /* Makes buttons full-width for easier tapping */
+        max-width: 280px;       /* Keeps them from getting too wide on tablets */
+        margin: 0 !important;   /* Removes any side margins that might cause off-centering */
+        text-align: center;
+    }
+}
+
 /* --- THE ULTIMATE MOBILE FIX (768px and below) --- */
 
 @media (max-width: 768px) {
